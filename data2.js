@@ -1,17 +1,21 @@
-var listings  =  data.results.map(function (listing) {
+var listings = data.results.map(function(listing) {
   return {
-    'title':listing.title,
-    'price':listing.price,
-    'currency_code':listing.currency_code,
-    'url_75x75':listing.Images[0].url_75x75
+    'title': listing.title,
+    'price': listing.price,
+    'currency_code': listing.currency_code,
+    'image': listing.Images[0].url_75x75
   }
 })
 
-var listingData= {
-  "listing":listings
+var listingData = {
+  "listing": listings
 }
+console.log(listingData);
 
-listingData.listing.forEach(function (listItem) {
-document.getElementById('content').innerHTML = listItem.title
-console.log(listItem);
+listingData.listing.forEach(function(listItem) {
+  document.getElementById('content').innerHTML +=
+    `<div class="items">
+  <img src="${listItem.image}"/>
+  </div>`
+  console.log(listItem);
 })
