@@ -3,19 +3,23 @@ var listings = data.results.map(function(listing) {
     'title': listing.title,
     'price': listing.price,
     'currency_code': listing.currency_code,
-    'image': listing.Images[0].url_75x75
+    'image': listing.Images[0].url_170x135
   }
 })
+
+console.log(data.results);
 
 var listingData = {
   "listing": listings
 }
-console.log(listingData);
 
 listingData.listing.forEach(function(listItem) {
   document.getElementById('content').innerHTML +=
-    `<div class="items">
-  <img src="${listItem.image}"/>
-  </div>`
-  console.log(listItem);
+    `<div class="">
+      <div class="items three columns">
+          <img src="${listItem.image}"/>
+          <p class="item-text">${listItem.title.substring(0, 25)}...</p>
+          <span>${listItem.price}</span>
+       </div>
+     </div>`
 })
